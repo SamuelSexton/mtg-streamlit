@@ -1,0 +1,5 @@
+streamlit==1.49.1
+psycopg2-binary==2.9.10
+sentence-transformers==5.1.0
+numpy==2.3.2
+python-dotenv==1.1.0
