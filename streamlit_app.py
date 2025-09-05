@@ -7,10 +7,7 @@ IMG_URL = "https://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverse
 start_time = time.perf_counter()
 model = load_embedding_model()
 total_time = time.perf_counter() - start_time
-try:
-    #st.secrets
-except Exception as e:
-    st.session_state["local"] = 0
+
 st.title("MTG card search with symantic search support.")
 
 st.header("Coming Soon:")
