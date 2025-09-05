@@ -8,12 +8,12 @@ start_time = time.perf_counter()
 model = load_embedding_model()
 total_time = time.perf_counter() - start_time
 try:
-    st.secrets
+    #st.secrets
 except Exception as e:
     st.session_state["local"] = 0
 st.title("MTG card search with symantic search support.")
 
-st.html("<h2>Coming Soon:<h2>")
+st.header("Coming Soon:")
 st.write("""Search function with all the regular searches that 
          you are familiar with along with symatic search support.""")
 
