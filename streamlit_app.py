@@ -34,11 +34,12 @@ if st.session_state['FormSubmitter:search_form-Search'] == True:
 # if st.button('Previous Results', on_click=get_query_results(query, model, db,limit=10, offset=10)):
 #     on_click=get_query_results(query, model, db,limit=10, offset=10)
 if st.button('Next Results'):
-    print("clicked")
-    next_set = st.session_state['next']
-    get_query_results(st.session_state["query"], model, db,limit=10, offset=next_set)
-    st.session_state['next'] += 10
-    print(st.session_state['next'])
+    if st.session_state['query']:
+        print("clicked")
+        next_set = st.session_state['next']
+        get_query_results(st.session_state["query"], model, db,limit=10, offset=next_set)
+        st.session_state['next'] += 10
+        print(st.session_state['next'])
 # query = st.text_input("Symantic Search", placeholder="Type in a sentence or two of what you want your card to do.")
 # if query['query']:
 #     embedding = model.encode(query['query'], prompt_name="query").tolist()
