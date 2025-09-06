@@ -36,7 +36,7 @@ class Embedding_Db():
         self.conn.close()
         print('Database has been closed.')
     
-    def get_cosign(self, embedding,limit=10):
+    def get_cosign(self, embedding,limit=10, offset=0):
         stmt = """
             WITH cosign_distance as (
                 Select DISTINCT ON (name) c.name,
@@ -53,11 +53,11 @@ class Embedding_Db():
                 type_line
             From cosign_distance
             ORDER BY distance 
-            LIMIT %s OFFSET 0
+            LIMIT %s OFFSET %s
         """
         try:
             with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
-                cursor.execute(stmt, (embedding,limit))
+                cursor.execute(stmt, (embedding,limit,offset))
                 rows = cursor.fetchall()
                 return rows
         except psycopg2.Error as e:
