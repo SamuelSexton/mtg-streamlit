@@ -24,7 +24,8 @@ st.write("""Search function with all the regular searches that
          you are familiar with along with symatic search support.""")
 
 db = Embedding_Db()
-st.session_state['next'] = 0
+if 'next' not in st.session_state:
+    st.session_state['next'] = 0
 filters = search_area()
 rows = get_query_results(filters, model, db, limit=10, offset=0)
 if st.session_state['FormSubmitter:search_form-Search'] == True:
